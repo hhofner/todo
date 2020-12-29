@@ -1,0 +1,11 @@
+.main-content {
+    margin-left: 160px;
+    padding-top: 30px;
+    padding-left: 105px;
+    position: relative;
+}
+
+.full-width {
+    width: 100%;
+    text-align: left;
+}
