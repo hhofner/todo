@@ -10,12 +10,12 @@ import SideBar from "./components/sidebar/sidebar.component";
 import Content from "./components/content/content.component";
 
 function App() {
-    const [todoList, setTodoList] = useState('Today')
+    const [todoList, setTodoList] = useState('Today');
     return (
         <Provider store={store}>
             <div className="App">
                 <SideBar/>
-                <Content todoList={todoList}/>
+                <Content todoList={[]}/>
             </div>
         </Provider>
     );
