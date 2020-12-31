@@ -1,10 +1,10 @@
 import React from 'react';
 import './todo.styles.css';
 
-const Todo = ({name}) => (
+const Todo = () => (
     <div className="todo">
         <input type="checkbox"/>
-        {name}
+        <input className="no-outline" placeholder="New Todo"/>
     </div>
 )
 

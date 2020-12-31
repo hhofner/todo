@@ -5,21 +5,29 @@ import './content.styles.css';
 import Todo from "../todo/todo.component";
 import AddTodo from "../add-todo/add-todo.component";
 
-const Content = ({todoList}) => {
+import { addTodo } from "../../redux/actions/todo";
+
+const Content = ({todos, selectedTodoList, addTodo}) => {
     return (
     <div className="main-content">
-        <h1 className="full-width">{"Today"}</h1>
-        {todoList.map((todo) => (
-            <Todo name={todo.name} key={todo.id}/>
+        <h1 className="full-width">{selectedTodoList}</h1>
+        {todos.map((todo) => (
+            <Todo name={todo.content} key={todo.key}/>
         ))}
-        <AddTodo/>
+        <AddTodo dispatcher={addTodo}/>
     </div>
     )
 }
 
 const mapStateToProps = state => {
-    const { todos } = state;
-    return { todos: todos }
+    return {
+        todos: state.todos.todos,
+        selectedTodoList: state.todoList.selectedTodoList
+    }
 };
 
-export default connect(mapStateToProps)(Content)
+const mapDispatchToProps = dispatch => ({
+    addTodo: todo => dispatch(addTodo(todo))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Content)

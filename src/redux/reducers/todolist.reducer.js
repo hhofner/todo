@@ -1,4 +1,4 @@
-// import the action list
+import { TodoListTypes } from "../actions/todoList";
 
 const INITIAL_STATE = {
     selectedTodoList: "Today"
@@ -6,7 +6,7 @@ const INITIAL_STATE = {
 
 const todoListReducer = (state = INITIAL_STATE, action) => {
     switch(action.type) {
-        case "SELECT_TODO_LIST":
+        case TodoListTypes.SELECT_TODO_LIST:
             return {
                 ...state,
                 selectedTodoList: action.payload

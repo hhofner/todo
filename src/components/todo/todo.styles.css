@@ -2,3 +2,14 @@
     width: 100%;
     text-align: left;
 }
+
+.no-outline:focus {
+    outline: none;
+}
+
+input {
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+}

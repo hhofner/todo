@@ -4,10 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons'
 import './add-todo.styles.css'
 
-const AddTodo = () => {
+import uuid from 'react-uuid';
+
+const AddTodo = ({dispatcher}) => {
 
     return(
-       <button className="add-todo">
+       <button className="add-todo" onClick={() => dispatcher({key: uuid(), content: "yes!"})}>
             <FontAwesomeIcon icon={faPlusSquare}/> Create a new task
         </button>
     )
