@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Overpass', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
 .App-logo {
@@ -35,4 +36,8 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+button, textarea, input, select {
+  font-family: inherit;
 }
