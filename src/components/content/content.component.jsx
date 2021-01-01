@@ -21,7 +21,7 @@ class Content extends React.Component{
     render() {
         return (
             <div className="main-content" tabIndex="0" onKeyDown={this.handleKeyPress}>
-                <h1 className="full-width">{this.props.selectedTodoList}</h1>
+                <h1 className="full-width"><b>{this.props.selectedTodoList}</b></h1>
                 {this.props.todos.map((todo) => (
                     <Todo name={todo.content} key={todo.key}/>
                 ))}
