@@ -1,6 +1,10 @@
 .todo {
+    box-sizing: border-box;
     width: 100%;
     text-align: left;
+    padding-right: 10px;
+
+    margin-bottom: 2px;
 }
 
 .no-outline:focus {
@@ -8,8 +12,11 @@
 }
 
 input {
-    border-top-style: hidden;
-    border-right-style: hidden;
-    border-left-style: hidden;
-    border-bottom-style: hidden;
+    float: left;
+}
+
+textarea {
+    resize: none;
+    width: 96%;
+    border: none;
 }
