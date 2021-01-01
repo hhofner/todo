@@ -7,16 +7,28 @@ import AddTodo from "../add-todo/add-todo.component";
 
 import { addTodo } from "../../redux/actions/todo";
 
-const Content = ({todos, selectedTodoList, addTodo}) => {
-    return (
-    <div className="main-content">
-        <h1 className="full-width">{selectedTodoList}</h1>
-        {todos.map((todo) => (
-            <Todo name={todo.content} key={todo.key}/>
-        ))}
-        <AddTodo dispatcher={addTodo}/>
-    </div>
-    )
+class Content extends React.Component{
+    constructor(props) {
+        super(props);
+    }
+
+    handleKeyPress = (event) => {
+        if(event.key === 'Enter'){
+            console.log('You pressed enter')
+        }
+    }
+
+    render() {
+        return (
+            <div className="main-content" tabIndex="0" onKeyDown={this.handleKeyPress}>
+                <h1 className="full-width">{this.props.selectedTodoList}</h1>
+                {this.props.todos.map((todo) => (
+                    <Todo name={todo.content} key={todo.key}/>
+                ))}
+                <AddTodo dispatcher={this.props.addTodo}/>
+            </div>
+        )
+    }
 }
 
 const mapStateToProps = state => {
