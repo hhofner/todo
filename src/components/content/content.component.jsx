@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from "react-redux";
 import './content.styles.css';
 
-import Todo from "../todo/todo.component";
 import AddTodo from "../add-todo/add-todo.component";
-
-import { addTodo } from "../../redux/actions/todo";
+import TodoListContainer from "../todo-list-container/todo-list-container.component";
 
 class Content extends React.Component{
     constructor(props) {
@@ -22,10 +20,8 @@ class Content extends React.Component{
         return (
             <div className="main-content" tabIndex="0" onKeyDown={this.handleKeyPress}>
                 <h1 className="full-width"><b>{this.props.selectedTodoList}</b></h1>
-                {this.props.todos.map((todo) => (
-                    <Todo name={todo.content} key={todo.key}/>
-                ))}
-                <AddTodo dispatcher={this.props.addTodo}/>
+                <TodoListContainer />
+                <AddTodo />
             </div>
         )
     }
@@ -33,13 +29,8 @@ class Content extends React.Component{
 
 const mapStateToProps = state => {
     return {
-        todos: state.todos.todos,
         selectedTodoList: state.todoList.selectedTodoList
     }
 };
 
-const mapDispatchToProps = dispatch => ({
-    addTodo: todo => dispatch(addTodo(todo))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Content)
+export default connect(mapStateToProps)(Content)
