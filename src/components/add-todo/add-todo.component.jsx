@@ -13,9 +13,19 @@ const AddTodo = ({addTodo, selectedTodoList}) => {
 
     return(
        <button className="add-todo" onClick={() => addTodo(
-           {key: uuid(),
-            list: [selectedTodoList]})
-       }>
+               {
+                   key: uuid(),
+                   content: '',
+                   list: selectedTodoList,
+                   tags: [],
+                   isCompleted: false,
+                   isCancelled: false,
+                   isSelected: false,
+                   deadline: null,
+                   priority: 0
+               })
+       }
+       >
             <FontAwesomeIcon icon={faPlusSquare}/> Create a new task
         </button>
     )
