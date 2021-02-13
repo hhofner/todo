@@ -1,6 +1,9 @@
 .todo {
+    border: #282c34;
+    border-style: dashed;
     box-sizing: border-box;
     width: 100%;
+    max-width: 800px;
     text-align: left;
     padding-right: 10px;
 
