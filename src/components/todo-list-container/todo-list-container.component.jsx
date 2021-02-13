@@ -6,12 +6,12 @@ import { createStructuredSelector } from "reselect";
 import { selectTodosFromList } from "../../redux/selectors/todos.selectors";
 
 const TodoListContainer = ({todos}) => {
-    console.log("hey", todos);
+    // Probably need a useEffect state here?
     return (
-    <div>
-        {todos.map((todo) => <Todo name={todo.content} key={todo.key}/>)}
-    </div>
-)
+        <div>
+            {todos.map((todo) => <Todo todo={todo} key={todo.key} onUpdate={text => todo.content = text}/>)}
+        </div>
+    )
 }
 
 const mapStateToProps = createStructuredSelector({
