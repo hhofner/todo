@@ -1,7 +1,8 @@
 import { TodoTypes } from "../actions/todo";
 
 const INITIAL_STATE = {
-    todos: []
+    todos: [],
+    selectedTodo: null
 };
 
 const todoReducer = (state = INITIAL_STATE, action) => {
@@ -11,6 +12,16 @@ const todoReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 todos: [...state.todos, action.payload]
             };
+        case TodoTypes.SELECT_TODO:
+            return {
+                ...state,
+                selectedTodo: action.payload
+            };
+        case TodoTypes.CLEAR_SELECTED_TODO:
+            return {
+                ...state,
+                selectedTodo: action.payload
+            }
         default:
             return state;
     }
