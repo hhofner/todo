@@ -6,6 +6,6 @@ const selectSelectedTodoList = ({ todoList }) => todoList.selectedTodoList
 export const selectTodosFromList = createSelector(
     [selectTodos, selectSelectedTodoList],
     (todos, selectedTodoList) => todos.filter(
-        todo => todo.list.includes(selectedTodoList)
+        todo => todo.list.includes(selectedTodoList) && !todo.isCompleted
     )
 )

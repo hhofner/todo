@@ -1,25 +1,28 @@
 .todo {
-    border: #282c34;
-    border-style: dashed;
+    border-radius: 10px;
     box-sizing: border-box;
     width: 100%;
     max-width: 800px;
     text-align: left;
-    padding-right: 10px;
+    padding: 10px;
 
-    margin-bottom: 2px;
+    margin-bottom: 5px;
+    box-shadow: 0 0 11px rgba(33,33,33,.2);
 }
 
-.no-outline:focus {
-    outline: none;
+.expandedContent {
+    min-height: 100px;
+
+}
+
+.notExpandedContent {
+    overflow-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 40px;
 }
 
 input {
     float: left;
-}
-
-textarea {
-    resize: none;
-    width: 96%;
-    border: none;
 }

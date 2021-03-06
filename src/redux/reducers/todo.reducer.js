@@ -1,4 +1,5 @@
 import { TodoTypes } from "../actions/todo";
+import Todo from "../../components/todo/todo.component";
 
 const INITIAL_STATE = {
     todos: [],
@@ -21,6 +22,15 @@ const todoReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 selectedTodo: action.payload
+            }
+        case TodoTypes.COMPLETE_SELECTED_TODO:
+            return {
+                ...state,
+                todos: [state.todos.map(todo => {
+                    if (todo.id == action.payload) {
+                        todo.isCompleted = true;
+                    }
+                })]
             }
         default:
             return state;

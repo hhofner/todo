@@ -15,7 +15,7 @@ const TodoListContainer = ({todos}) => {
 }
 
 const mapStateToProps = createStructuredSelector({
-    todos: selectTodosFromList
+    todos: selectTodosFromList,
 })
 
 export default connect(mapStateToProps)(TodoListContainer);

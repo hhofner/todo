@@ -1,7 +1,8 @@
 export const TodoTypes = {
     ADD_TODO: "ADD_TODO",
     SELECT_TODO: "SELECT_TODO",
-    CLEAR_SELECTED_TODO: "CLEAR_SELECTED_TODO"
+    CLEAR_SELECTED_TODO: "CLEAR_SELECTED_TODO",
+    COMPLETE_SELECTED_TODO: "COMPLETE_SELECTED_TODO"
 }
 
 export const addTodo = todo => ({
@@ -17,4 +18,9 @@ export const selectTodo = todo => ({
 export const clearSelectedTodo = todo => ({
     type: TodoTypes.CLEAR_SELECTED_TODO,
     payload: null
+})
+
+export const completeSelectedTodo = todo => ({
+    type: TodoTypes.COMPLETE_SELECTED_TODO,
+    payload: todo.id
 })
