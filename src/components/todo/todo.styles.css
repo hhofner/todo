@@ -10,9 +10,16 @@
     box-shadow: 0 0 11px rgba(33,33,33,.2);
 }
 
-.expandedContent {
-    min-height: 100px;
+[contenteditable] {
+    outline: 0px solid transparent;
+}
 
+[contenteditable]:focus {
+    outline: 0px solid transparent;
+}
+
+.expandedContent {
+    min-height: 50px;
 }
 
 .notExpandedContent {

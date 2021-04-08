@@ -1,8 +1,14 @@
 .side-bar {
     position: fixed;
     height: 100%;
-    width: 160px;
+    width: 130px;
     background-color: #fafafa;
     top: 0;
     padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.side-bar-option {
+    margin-bottom: 5px;
 }
