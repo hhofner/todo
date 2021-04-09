@@ -3,17 +3,27 @@ import './content.styles.css';
 
 import uuid from 'react-uuid';
 
-import { useTodoStore } from "../../zustand/root-zustand";
+import { useTodoListStore, useTodoStore } from "../../zustand/root-zustand";
 
 const Content = () => {
-    const todos = useTodoStore(state => state.todos);
+    const currentList = useTodoListStore(state => state.currentTodoList);
+
+    const todos = useTodoStore(state => state.todos.filter(todo => todo.list === currentList));
     const addTodo = useTodoStore(state => state.addTodo);
     const removeTodo = useTodoStore(state => state.removeTodo);
 
     const selectedTodo = useTodoStore(state => state.selectedTodo);
     const selectTodo = useTodoStore(state => state.selectTodo);
+    const unSelectTodo = useTodoStore(state => state.unSelectTodo);
 
-    const unsub1 = useTodoStore.subscribe(console.log);
+    // const unsub1 = useTodoStore.subscribe(console.log);
+
+    const createTodo = (title, list) => ({
+        id: uuid(),
+        title: title,
+        list: list,
+        description: 'TODO'
+    })
 
     const [newTodoTitle, setNewTodoTitle] = useState('');
     return (
@@ -24,22 +34,26 @@ const Content = () => {
                     <div
                         key={todo.id}
                         onClick={() => {
-                            selectTodo(todo.id);
+                            if (!selectedTodo.includes(todo)){
+                                selectTodo(todo.id);
+                            } else {
+                                unSelectTodo(todo.id);
+                            }
                         }}
-                        style={((selectedTodo.id === todo.id) ? {'backgroundColor': 'blue'} : {})}
+                        style={(selectedTodo.includes(todo) ? {'backgroundColor': 'blue'} : {})}
                     >
                         {todo.id}: {todo.title}
                     </div>)
             }
             <input type="text" value={newTodoTitle} onChange={event => setNewTodoTitle(event.target.value)}/>
             <div onClick={() => {
-                addTodo({id: uuid(), title: newTodoTitle});
+                addTodo(createTodo(newTodoTitle, currentList));
                 setNewTodoTitle('');
             }}>
                 {'+++'}
             </div>
             <div onClick={() => {
-                removeTodo(selectedTodo);
+                removeTodo(selectedTodo[0]);
             }}>
                 {'---'}
             </div>
