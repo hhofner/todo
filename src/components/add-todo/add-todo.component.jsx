@@ -1,7 +1,6 @@
 import React , { useState } from 'react';
 
 import { connect } from 'react-redux';
-import { addTodo } from "../../redux/actions/todo";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons'

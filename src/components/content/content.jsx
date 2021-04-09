@@ -1,29 +1,45 @@
 import React, { useState } from 'react';
 import './content.styles.css';
 
+import uuid from 'react-uuid';
+
 import { useTodoStore } from "../../zustand/root-zustand";
 
 const Content = () => {
     const todos = useTodoStore(state => state.todos);
     const addTodo = useTodoStore(state => state.addTodo);
-    const removeTodo = useTodoStore(state => state.removeTodo)
+    const removeTodo = useTodoStore(state => state.removeTodo);
+
+    const selectedTodo = useTodoStore(state => state.selectedTodo);
+    const selectTodo = useTodoStore(state => state.selectTodo);
+
+    const unsub1 = useTodoStore.subscribe(console.log);
 
     const [newTodoTitle, setNewTodoTitle] = useState('');
     return (
         <div className="main-content">
             <h1 className="full-width"></h1>
             {
-                todos.map(todo => <div>{todo.title}</div>)
+                todos.map(todo =>
+                    <div
+                        key={todo.id}
+                        onClick={() => {
+                            selectTodo(todo.id);
+                        }}
+                        style={((selectedTodo.id === todo.id) ? {'backgroundColor': 'blue'} : {})}
+                    >
+                        {todo.id}: {todo.title}
+                    </div>)
             }
             <input type="text" value={newTodoTitle} onChange={event => setNewTodoTitle(event.target.value)}/>
             <div onClick={() => {
-                addTodo({id: todos[todos.length - 1].id +1, title: newTodoTitle});
+                addTodo({id: uuid(), title: newTodoTitle});
                 setNewTodoTitle('');
             }}>
                 {'+++'}
             </div>
             <div onClick={() => {
-                removeTodo(todos[todos.length - 1]);
+                removeTodo(selectedTodo);
             }}>
                 {'---'}
             </div>
