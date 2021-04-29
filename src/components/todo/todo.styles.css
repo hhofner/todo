@@ -1,3 +1,15 @@
+.rounded-border {
+    border: #282c34;
+}
+
+.align-self-end {
+    align-self: flex-end;
+}
+
+.left-margin-auto {
+    left-margin: auto;
+}
+
 .todo {
     border-radius: 10px;
     box-sizing: border-box;

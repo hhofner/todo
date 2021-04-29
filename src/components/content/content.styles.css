@@ -1,5 +1,6 @@
 .main-content {
     margin-left: 160px;
+    margin-right: 250px;
     padding-top: 30px;
     padding-left: 105px;
     padding-right: 105px;
@@ -9,4 +10,18 @@
 .full-width {
     width: 100%;
     text-align: left;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-justify-start {
+    justify-content: flex-start;
 }
